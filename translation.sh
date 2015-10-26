@@ -7,9 +7,9 @@ for i in core/res/res/values-*/cm_strings.xml; do
         target=android_frameworks_base
         rm -rf ../${target}/${c3po}/cm_string.xml
         for y in "${@}"; do
-                sed -n "/${y}/, /<\/string>/p" ${i} >> ../${c3po}/cm_string.xml
+                sed -n "/${y}/, /<\/string>/p" ${i} >> ../${target}/${c3po}/cm_string.xml
         done;
-        awk '!a[$0]++' ../${target}/${c3po}/cm_string.xml > ../${c3po}/cm_string.xm
+        awk '!a[$0]++' ../${target}/${c3po}/cm_string.xml > ../${target}/${c3po}/cm_string.xm
         mv ../${target}/${c3po}/cm_string.xm ../${target}/${c3po}/cm_string.xml
         echo '</resources>' >> ../${target}/${c3po}/cm_string.xml
         sed -i '1i<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">' ../${target}/${c3po}/cm_string.xml
