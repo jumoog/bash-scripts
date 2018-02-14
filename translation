@@ -1,0 +1,5 @@
+find . -name "arrays.xml" -exec rm -rf {} \;
+
+find . -name "cm_*.xml" | xargs tar cvf - | (cd /home/tmp/strings/ ; tar xfp -)
+
+rsync -av /home/tmp/strings/ /home/tmp/android_packages_apps_Settings/
